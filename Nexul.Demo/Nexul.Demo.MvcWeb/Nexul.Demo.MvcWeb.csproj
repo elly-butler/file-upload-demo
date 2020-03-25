@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>bb31a984-c749-4009-99b2-d45bf4d18242</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Nexul.Demo.SqlDbServices\Nexul.Demo.SqlDbServices.csproj" />
+    <ProjectReference Include="..\Nexul.Demo\Nexul.Demo.csproj" />
+  </ItemGroup>
+
+
+
+</Project>
