@@ -25,6 +25,8 @@ namespace Nexul.Demo.MvcWeb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: replace the compat version of image resizer with ImageSharp
+            services.AddSingleton<IImageResizer, CompatImageResizer>();
             services.AddScoped<IFileData, SqlFileData>();
             services.AddControllersWithViews();
         }
