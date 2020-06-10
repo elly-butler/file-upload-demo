@@ -1,0 +1,50 @@
+﻿Apply All migrations on your local computer
+===========================================
+
+Check out our courseware in the Full-stack developer program to learn what all of this means.
+
+One time setup for your project
+-------------------------------
+
+If you copy this code into another repository, you'll probably want to rename the database name
+to something else.  Its just a couple easy steps.
+
+1. First update your appsettings.Development.json file database connection string.  
+2. Pick a local database name that makes sense. Replace NexulDemo with a good name.
+
+Value to be changed!!:
+"ConnectionStrings": {
+    "DefaultConnection": "Server=(localdb)\\MSSQLLocalDB;Database=NexulDemo;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+
+Each developer on the team after cloning your repo must:
+--------------------------------------------------------
+
+1. On the terminal (e.g. command prompt) navigate to the directory of the web project. Your path may vary.
+2. Run the following two commands. Sample output is shown below each command.
+
+C:\GitRepos\file-upload-demo\Nexul.Demo.MvcWeb>
+	dotnet ef database update -c NexulIdentityDbContext -p ..\Nexul.Demo.SqlDbServices
+
+Applying migration '20200610172055_InitialIdentity'.
+Done.
+
+C:\GitRepos\file-upload-demo\Nexul.Demo.MvcWeb>
+	dotnet ef database update -c NexulDemoDbContext -p ..\Nexul.Demo.SqlDbServices
+
+Applying migration '20200610172133_InitialDemo'.
+Done.
+
+
+Creation of New Migrations
+==========================
+
+0. Make entity changes, update the DbContext as needed.
+1. On the terminal (e.g. command prompt) navigate to the directory of the web project. Your path may vary.
+2. Run the following two commands.
+
+C:\GitRepos\file-upload-demo\Nexul.Demo.MvcWeb>
+	dotnet ef migrations add InitialIdentity -c NexulIdentityDbContext -p ..\Nexul.Demo.SqlDbServices
+
+C:\GitRepos\file-upload-demo\Nexul.Demo.MvcWeb>
+	dotnet ef migrations add InitialDemo -c NexulDemoDbContext -p ..\Nexul.Demo.SqlDbServices
