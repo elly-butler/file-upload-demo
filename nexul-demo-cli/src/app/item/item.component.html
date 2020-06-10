@@ -1,1 +1,35 @@
-<p>item works!</p>
+<h2 mat-dialog-title>
+  <span *ngIf="data.itemId">Edit Content</span>
+  <span *ngIf="!data.itemId">Create Content</span>
+</h2>
+<mat-dialog-content>
+  <form [formGroup]="editForm" class="content active" novalidate>
+    <section flxFlex="100">
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" name="name">
+        <mat-hint>What do you want to call it?</mat-hint>
+      </mat-form-field>
+
+      <div>
+        <form [formGroup]="uploadForm">
+          <div class="image-progress" *ngIf="isUploading">
+            <mat-spinner></mat-spinner>
+          </div>
+          <div class="image-upload" *ngIf="!isUploading">
+            <input hidden (change)="fileChosen($event)" #fileIdInput accept=".jpg, .png, .jpeg, .bmp" type="file"/>
+            <a color="primary" class="floatingButton" mat-raised-button (click)="fileIdInput.click()">
+              <span *ngIf="fileId">REPLACE Image</span>
+              <span *ngIf="!fileId">Choose Image</span>
+            </a>
+            <img class="img-preview" [src]="imgUrl" [style.height]="'150px'"/>
+          </div>
+        </form>
+      </div>
+    </section>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button (click)="save()" color="accent">Save</button>
+</mat-dialog-actions>
