@@ -1,18 +1,18 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { FileService } from './file.service';
-import { FileMetadata } from './file.model';
+import { FileService } from '../file.service';
+import { FileMetadata } from '../file.model';
 import { clientGuidPrefix } from 'src/shared/utility/type-utils';
-import { Item } from './item.model';
+import { Item } from '../item.model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-item',
-  templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  selector: 'app-item-dialog',
+  templateUrl: './item-dialog.component.html',
+  styleUrls: ['./item-dialog.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemDialogComponent implements OnInit {
 
   editForm: FormGroup;
   uploadForm: FormGroup;
@@ -28,7 +28,7 @@ export class ItemComponent implements OnInit {
   ];
 
   constructor(
-    public dialogRef: MatDialogRef<ItemComponent>,
+    public dialogRef: MatDialogRef<ItemDialogComponent>,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: Item,

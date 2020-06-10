@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ItemRoutingModule } from './item-routing.module';
-import { ItemComponent } from './item.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,9 +10,14 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ItemPageComponent } from './item-page/item-page.component';
+import { ItemDialogComponent } from './item-dialog/item-dialog.component';
 
 @NgModule({
-  declarations: [ItemComponent],
+  declarations: [
+    ItemPageComponent,
+    ItemDialogComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
