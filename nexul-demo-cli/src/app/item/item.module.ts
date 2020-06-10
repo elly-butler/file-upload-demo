@@ -3,13 +3,27 @@ import { CommonModule } from '@angular/common';
 
 import { ItemRoutingModule } from './item-routing.module';
 import { ItemComponent } from './item.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ItemComponent],
   imports: [
     CommonModule,
-    ItemRoutingModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    ItemRoutingModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
   ]
 })
 export class ItemModule { }

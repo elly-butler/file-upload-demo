@@ -4,11 +4,12 @@
 </h2>
 <mat-dialog-content>
   <form [formGroup]="editForm" class="content active" novalidate>
-    <section flxFlex="100">
+    <section>
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input matInput formControlName="name" name="name">
         <mat-hint>What do you want to call it?</mat-hint>
+        <mat-error>A name is required.</mat-error>
       </mat-form-field>
 
       <div>

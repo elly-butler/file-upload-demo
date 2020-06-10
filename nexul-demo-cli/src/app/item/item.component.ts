@@ -5,6 +5,7 @@ import { FileService } from './file.service';
 import { FileMetadata } from './file.model';
 import { clientGuidPrefix } from 'src/shared/utility/type-utils';
 import { Item } from './item.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-item',
@@ -34,7 +35,7 @@ export class ItemComponent implements OnInit {
     private fileService: FileService
   ) {
     this.editForm = this.fb.group({
-      name: [''],
+      name: ['', Validators.required],
       fileId: [''],
       // TODO: other inputs for the item the file will be associated to.
     });
