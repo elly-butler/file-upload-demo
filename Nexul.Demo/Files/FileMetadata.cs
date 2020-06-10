@@ -20,11 +20,6 @@ namespace Nexul.Demo.Files
         public long Size { get; set; }
 
         /// <summary>
-        /// The basic type of file.  See ContentType for specifics.
-        /// </summary>
-        public FileType FileType { get; set; }
-
-        /// <summary>
         /// The file extension.
         /// </summary>
         [MaxLength(25)]
@@ -39,26 +34,26 @@ namespace Nexul.Demo.Files
         /// <summary>
         /// The identity of the user that uploaded the file.
         /// </summary>
-        public Guid UserId { get; set; }
-
-        /// <summary>
-        /// The date and time when the file was uploaded.
-        /// </summary>
-        public DateTime UploadDate { get; set; }
+        public AuditCreate Audit { get; set; }
 
         public FileMetadata()
         {
+            Audit = new AuditCreate();
         }
 
         public FileMetadata(FileMetadata source)
         {
+            if (source == null)
+            {
+                Audit = new AuditCreate();
+                return;
+            }
+
             FileId = source.FileId;
             Size = source.Size;
-            FileType = source.FileType;
             Extension = source.Extension;
             ContentType = source.ContentType;
-            UserId = source.UserId;
-            UploadDate = source.UploadDate;
+            Audit = new AuditCreate(source.Audit);
         }
     }
 }
