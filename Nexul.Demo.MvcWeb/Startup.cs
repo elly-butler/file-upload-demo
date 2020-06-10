@@ -73,11 +73,10 @@ namespace Nexul.Demo.MvcWeb
             services.Configure<GzipCompressionProviderOptions>(options => options.Level = CompressionLevel.Fastest);
             services.AddResponseCompression(options => { options.Providers.Add<GzipCompressionProvider>(); });
 
-            // TODO: if uploading from Angular, you may want this
-            //services.AddSpaStaticFiles(config =>
-            //{
-            //    config.RootPath = Configuration["SpaRoot"];
-            //});
+            services.AddSpaStaticFiles(config =>
+            {
+                config.RootPath = Configuration["SpaRoot"];
+            });
 
             services.Configure<MicrosoftAuthSettings>(Configuration.GetSection(nameof(MicrosoftAuthSettings)));
 
@@ -171,8 +170,7 @@ namespace Nexul.Demo.MvcWeb
             app.UseHttpsRedirection();
             app.UseResponseCompression();
             app.UseStaticFiles();
-            // TODO: if you're doing Angular for the uploads
-            //app.UseSpaStaticFiles();
+            app.UseSpaStaticFiles();
 
             app.UseRouting();
             app.UseAuthentication();
@@ -183,18 +181,17 @@ namespace Nexul.Demo.MvcWeb
                 routes.MapControllers();
             });
 
-            //TODO: enable if you're doing Angular for the uploads
-            //app.UseWhen(
-            //    context => !context.Request.Path.StartsWithSegments("/api"),
-            //    appBuilder => appBuilder.UseSpa(spa =>
-            //    {
-            //        if (env.IsDevelopment())
-            //        {
-            //            spa.Options.SourcePath = "../nexul-demo-cli";
-            //            spa.Options.StartupTimeout = new TimeSpan(0, 0, 300); //300 seconds
-            //            spa.UseAngularCliServer(npmScript: "start");
-            //        }
-            //    }));
+            app.UseWhen(
+                context => !context.Request.Path.StartsWithSegments("/api"),
+                appBuilder => appBuilder.UseSpa(spa =>
+                {
+                    if (env.IsDevelopment())
+                    {
+                        spa.Options.SourcePath = "../nexul-demo-cli";
+                        spa.Options.StartupTimeout = new TimeSpan(0, 0, 300); //300 seconds
+                        spa.UseAngularCliServer(npmScript: "start");
+                    }
+                }));
         }
     }
 }
