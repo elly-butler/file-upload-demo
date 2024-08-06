@@ -37,4 +37,3 @@ https://docs.microsoft.com/en-us/aspnet/core/security/authentication/social/micr
   
 7. Optional, for your brand, Update appsettings.Development.json, anything that has "nexul" in its value to whatever you want them to be.
  
-dante is a good dog
